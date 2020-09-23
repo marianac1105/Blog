@@ -2,6 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql, Link} from "gatsby"
 
 import Layout from "../Components/layout"
+import blogStyles from "./blog.module.scss"
 
 
 
@@ -27,9 +28,9 @@ export default function BlogPage() {
   return <div>
   <Layout><h1>Blog</h1>
   
-  <ol>
+  <ol className={blogStyles.posts}>
   {data.allMarkdownRemark.edges.map(function (edge) {
-    return <li>
+    return <li className={blogStyles.post}>
     <Link to ={"/blog/" + edge.node.fields.slug}>
     <h2>{edge.node.frontmatter.title}</h2>
     <p>{edge.node.frontmatter.date}</p>
