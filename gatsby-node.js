@@ -1,34 +1,30 @@
-const path = require('path')
+const path = require("path")
 
-module.exports.onCreateNode = ({ node, actions }) => {
+// module.exports.onCreateNode = ({ node, actions }) => {
+//   const { createNodeField } = actions
 
-    const { createNodeField } = actions
-  
-      if(node.internal.type === "MarkdownRemark"){
-          const slug = path.basename(node.fileAbsolutePath, ".md")
+//   if (node.internal.type === "MarkdownRemark") {
+//     const slug = path.basename(node.fileAbsolutePath, ".md")
+
+//     createNodeField({
+//       node,
+//       name: "slug",
+//       value: slug,
+//     })
+//   }
+// }
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const blogPostTemplate = path.resolve(`src/templates/blog-post.js`)
+  const res = await graphql(`
+  query{
+    allContentfulBlogPost{
+      edges{
+        node{
           
-          createNodeField ({
-              node,
-              name: 'slug',
-              value: slug
-          })
-
-
-      }
-      
-  
-  }
-
-  exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions
-    const blogPostTemplate = path.resolve(`src/templates/blog-post.js`)
-    const res = await graphql(`query  {
-    allMarkdownRemark {
-      edges {
-        node {
-          fields {
-            slug
-          }
+          slug
+          
         }
       }
     }
@@ -36,12 +32,13 @@ module.exports.onCreateNode = ({ node, actions }) => {
   `)
 
   // Create blog post pages.
-  res.data.allMarkdownRemark.edges.forEach(edge => {
+  res.data.allContentfulBlogPost.edges.forEach(edge => {
     createPage({
       // Path for this page — required
-      path: `/blog/${edge.node.fields.slug}`,
+      path: `/blog/${edge.node.slug}`,
       component: blogPostTemplate,
-      context: {slug: edge.node.fields.slug
+      context: {
+        slug: edge.node.slug,
         // Add optional context data to be inserted
         // as props into the page component..
         //
@@ -54,4 +51,3 @@ module.exports.onCreateNode = ({ node, actions }) => {
     })
   })
 }
-
