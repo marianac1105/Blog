@@ -15,7 +15,7 @@ function Footer() {
 
   return (
     <footer className={footerStyle.footer}>
-      <p>Made by {data.site.siteMetadata.author}, Copyright 2020</p>
+      <p>Made by {data.site.siteMetadata.author} Copyright 2020</p>
     </footer>
   )
 }

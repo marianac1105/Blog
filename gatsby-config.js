@@ -6,13 +6,14 @@
 
 module.exports = {
   siteMetadata: {
-    title: "Mariana Cerqueira | Front End Developer",
-    author: "Mariana Cerqueira"
+    title: "Mariana Cerqueira",
+    author: "Mariana Cerqueira,",
 
   },
   
   /* Your site config here */
-  plugins: [{
+  plugins: [`gatsby-plugin-react-helmet`,
+  {
     resolve: `gatsby-source-contentful`,
     options: {
       spaceId: process.env.CONTENTFUL_SPACE_ID,
