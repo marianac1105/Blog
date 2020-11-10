@@ -18,7 +18,7 @@ query{
 
     <ul className={headerStyles.navList}>
     <li ><Link className={headerStyles.navItem} activeClassName={headerStyles.navItemActive} to = "/">HOME</Link> </li>
-    <li><Link className={headerStyles.navItem} activeClassName={headerStyles.navItemActive} to = "/aboutus">ABOUT ME</Link> </li>
+    <li><Link className={headerStyles.navItem} activeClassName={headerStyles.navItemActive} to = "/aboutme">ABOUT ME</Link> </li>
     <li><Link className={headerStyles.navItem} activeClassName={headerStyles.navItemActive} to = "/blog">BLOG</Link></li>
     <li><Link className={headerStyles.navItem} activeClassName={headerStyles.navItemActive} to = "/contact">CONTACT</Link></li>
     </ul>

@@ -7,7 +7,7 @@
 module.exports = {
   siteMetadata: {
     title: "Mariana Cerqueira",
-    author: "Mariana Cerqueira,",
+    author: "Mariana Cerqueira",
 
   },
   
